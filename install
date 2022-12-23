@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+mappings=()
+mappings+=("nvim=$HOME/.config/nvim")
+
+
+for mapping in ${mappings[@]}
+do
+  parts=($(echo $mapping | sed "s/=/ /g"))
+  dotfile_path=${parts[0]}
+  target_path=${parts[1]}
+
+
+  echo "Linking $dotfile_path"
+  ln -s -f $(realpath $dotfile_path) $target_path
+
+done
+
+
