@@ -19,7 +19,18 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use 'folke/tokyonight.nvim'
+  use({ 
+	  'folke/tokyonight.nvim',
+	  config = function() 
+	  	require('tokyonight').setup({
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent"
+			}
+		})
+	  end
+  })
 
   use({
     'nvim-treesitter/nvim-treesitter',
